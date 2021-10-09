@@ -14,11 +14,13 @@ import WindowEventService, {
     WindowServiceEventTargetObject
 } from "./WindowEventService";
 import {JsonObject} from "../../ts/Json";
+import { isStyleScheme, stringifyStyleScheme, StyleScheme } from "./types/StyleScheme";
 
 const LOG = LogService.createLogger('ThemeService');
 
 export enum ThemeServiceEvent {
-    COLOR_SCHEME_CHANGED = "ThemeService:colorSchemeChanged"
+    COLOR_SCHEME_CHANGED = "ThemeService:colorSchemeChanged",
+    STYLE_SCHEME_CHANGED = "ThemeService:styleSchemeChanged"
 }
 
 export type ThemeServiceDestructor = ObserverDestructor;
@@ -27,16 +29,21 @@ export interface ThemeServiceColorSchemeChangedEventCallback {
     (event: ThemeServiceEvent.COLOR_SCHEME_CHANGED, scheme: ColorScheme) : void;
 }
 
-export enum ThemeServiceMessageType {
-    COLOR_SCHEME_CHANGED = "fi.nor.ui.ThemeService:colorSchemeChanged"
+export interface ThemeServiceStyleSchemeChangedEventCallback {
+    (event: ThemeServiceEvent.STYLE_SCHEME_CHANGED, scheme: StyleScheme) : void;
 }
 
-export interface ThemeChangeMessageDTO {
+export enum ThemeServiceMessageType {
+    COLOR_SCHEME_CHANGED = "fi.nor.ui.ThemeService:colorSchemeChanged",
+    STYLE_SCHEME_CHANGED = "fi.nor.ui.ThemeService:styleSchemeChanged"
+}
+
+export interface ThemeColorSchemeChangeMessageDTO {
     readonly type  : ThemeServiceMessageType.COLOR_SCHEME_CHANGED;
     readonly value : ColorScheme | undefined;
 }
 
-export function isThemeChangeMessageDTO (value : any) : value is ThemeChangeMessageDTO {
+export function isColorSchemeThemeChangeMessageDTO (value : any) : value is ThemeColorSchemeChangeMessageDTO {
     return (
         !!value
         && value?.type === ThemeServiceMessageType.COLOR_SCHEME_CHANGED
@@ -44,16 +51,31 @@ export function isThemeChangeMessageDTO (value : any) : value is ThemeChangeMess
     );
 }
 
+export interface ThemeStyleSchemeChangeMessageDTO {
+    readonly type  : ThemeServiceMessageType.STYLE_SCHEME_CHANGED;
+    readonly value : StyleScheme | undefined;
+}
+
+export function isStyleSchemeThemeChangeMessageDTO (value : any) : value is ThemeStyleSchemeChangeMessageDTO {
+    return (
+        !!value
+        && value?.type === ThemeServiceMessageType.STYLE_SCHEME_CHANGED
+        && ( value?.value === undefined || isStyleScheme(value?.value) )
+    );
+}
+
 export class ThemeService {
 
     private static _observer                   : Observer<ThemeServiceEvent> = new Observer<ThemeServiceEvent>("ThemeService");
     private static _colorScheme                : ColorScheme | undefined;
+    private static _styleScheme                : StyleScheme | undefined;
     private static _windowServiceListener      : WindowServiceDestructor | undefined;
     private static _storageServiceListener     : ThemeLocalStorageServiceDestructor | undefined;
     private static _windowEventServiceListener : WindowEventServiceDestructor | undefined;
 
 
     public static Event = ThemeServiceEvent;
+
 
     public static hasDarkMode () : boolean {
         return this.getColorScheme() === ColorScheme.DARK;
@@ -92,30 +114,70 @@ export class ThemeService {
         return this;
     }
 
+
+    public static getStyleScheme () : StyleScheme {
+        return this._styleScheme ?? ThemeLocalStorageService.getStyleScheme() ?? WindowService.getStyleScheme();
+    }
+
+    public static setStyleScheme (value: StyleScheme | undefined) : ThemeService {
+
+        if (this._styleScheme !== value) {
+
+            this._styleScheme = value;
+
+            if (ThemeLocalStorageService.getStyleScheme() !== value) {
+                ThemeLocalStorageService.setStyleScheme(value);
+            }
+
+            if (this._observer.hasCallbacks(ThemeServiceEvent.STYLE_SCHEME_CHANGED)) {
+                if (value === undefined) {
+                    this._observer.triggerEvent(ThemeServiceEvent.STYLE_SCHEME_CHANGED, WindowService.getStyleScheme());
+                } else {
+                    this._observer.triggerEvent(ThemeServiceEvent.STYLE_SCHEME_CHANGED, value);
+                }
+            }
+
+            LOG.debug(`Style scheme changed by user as ${this._styleScheme ? stringifyStyleScheme(this._styleScheme) : 'default'}`);
+
+        }
+
+        return this;
+    }
+
     public static on (eventName: ThemeServiceEvent.COLOR_SCHEME_CHANGED, callback: ThemeServiceColorSchemeChangedEventCallback) : ThemeServiceDestructor;
+    public static on (eventName: ThemeServiceEvent.STYLE_SCHEME_CHANGED, callback: ThemeServiceStyleSchemeChangedEventCallback) : ThemeServiceDestructor;
 
     // Implementation
     public static on (
-        name     : ThemeServiceEvent.COLOR_SCHEME_CHANGED,
-        callback : ThemeServiceColorSchemeChangedEventCallback
+        name     : ThemeServiceEvent.COLOR_SCHEME_CHANGED | ThemeServiceEvent.STYLE_SCHEME_CHANGED,
+        callback : ThemeServiceColorSchemeChangedEventCallback | ThemeServiceStyleSchemeChangedEventCallback
     ) : ThemeServiceDestructor {
 
-        if (name === ThemeServiceEvent.COLOR_SCHEME_CHANGED) {
+        if ( name === ThemeServiceEvent.COLOR_SCHEME_CHANGED || name === ThemeServiceEvent.STYLE_SCHEME_CHANGED ) {
 
-            if (this._colorScheme === undefined) {
+            if ( this._windowServiceListener === undefined ) {
                 this._startWindowServiceListener();
+            }
+
+            if (this._storageServiceListener === undefined) {
                 this._startLocalStorageListener();
+            }
+
+            if (this._windowEventServiceListener === undefined) {
                 this._startWindowEventServiceListener();
             }
 
-            let destructor : any = this._observer.listenEvent(name, callback);
+            let destructor : any = this._observer.listenEvent(name, callback as any);
 
             return () => {
                 try {
                     destructor();
                     destructor = undefined;
                 } finally {
-                    if (!this._observer.hasCallbacks(ThemeServiceEvent.COLOR_SCHEME_CHANGED)) {
+                    if (
+                        !this._observer.hasCallbacks(ThemeServiceEvent.COLOR_SCHEME_CHANGED)
+                        && !this._observer.hasCallbacks(ThemeServiceEvent.STYLE_SCHEME_CHANGED)
+                    ) {
                         this._removeWindowServiceListener();
                         this._removeLocalStorageListener();
                         this._removeWindowEventServiceListener();
@@ -152,7 +214,7 @@ export class ThemeService {
         origin : string = '*'
     ) {
 
-        const message : ThemeChangeMessageDTO = {
+        const message : ThemeColorSchemeChangeMessageDTO = {
             type: ThemeServiceMessageType.COLOR_SCHEME_CHANGED,
             value: value
         };
@@ -184,7 +246,7 @@ export class ThemeService {
             WindowEventService.Event.JSON_MESSAGE,
             (event: WindowEventServiceEvent.JSON_MESSAGE, message: JsonObject) => {
                 if (this._observer.hasCallbacks(ThemeServiceEvent.COLOR_SCHEME_CHANGED)) {
-                    if (isThemeChangeMessageDTO(message)) {
+                    if (isColorSchemeThemeChangeMessageDTO(message)) {
                         LOG.debug(`Color scheme changed through a message as ${stringifyColorScheme(message.value)}`);
                         this.setColorScheme(message.value);
                     }

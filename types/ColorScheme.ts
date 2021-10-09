@@ -29,7 +29,7 @@ export function isColorScheme (value: any): value is ColorScheme {
  */
 export function parseColorScheme (value: any): ColorScheme | undefined {
 
-    if (ColorScheme.test(value)) return value;
+    if (isColorScheme(value)) return value;
 
     if (isString(value)) {
         value = trim(value).toUpperCase();
@@ -60,21 +60,4 @@ export function stringifyColorScheme (value: ColorScheme | undefined): string {
         case ColorScheme.LIGHT : return 'LIGHT';
         default                : return `ColorScheme(${value})`;
     }
-}
-
-// eslint-disable-next-line
-export namespace ColorScheme {
-
-    export function test (value: any): value is ColorScheme {
-        return isColorScheme(value);
-    }
-
-    export function parse (value: any): ColorScheme | undefined {
-        return parseColorScheme(value);
-    }
-
-    export function stringify (value: ColorScheme | undefined): string {
-        return stringifyColorScheme(value);
-    }
-
 }
