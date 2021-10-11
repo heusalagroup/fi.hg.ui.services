@@ -51,6 +51,7 @@ export function parseStyleScheme (value: any): StyleScheme | undefined {
 
 /**
  * Also available `StyleScheme.stringify(value: StyleScheme | undefined) : string`
+ *
  * @param value
  */
 export function stringifyStyleScheme (value: StyleScheme | undefined): string {
