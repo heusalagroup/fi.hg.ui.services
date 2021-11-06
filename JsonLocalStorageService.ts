@@ -3,14 +3,14 @@
 //import LogService from "../../ts/LogService";
 import JsonAny from "../../ts/Json";
 
-import LocalStorageService, {LocalStorageServiceDestructor} from "./LocalStorageService";
+import LocalStorageService from "./LocalStorageService";
 import {
     StorageServiceChangedEventCallback, StorageServiceClearEventCallback,
     StorageServiceCreatedEventCallback,
     StorageServiceDeletedEventCallback,
     StorageServiceEvent, StorageServiceModifiedEventCallback
 } from "./private/AbtractStorageService";
-import {ObserverCallback, ObserverDestructor} from "../../ts/Observer";
+import {ObserverDestructor} from "../../ts/Observer";
 
 //const LOG = LogService.createLogger('JsonLocalStorageService');
 
