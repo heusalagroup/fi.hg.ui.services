@@ -25,8 +25,8 @@ export class SessionStorageService extends AbstractStorageService {
         return this._observer;
     }
 
-    protected static _getStorage () : StorageObject {
-        return window.sessionStorage;
+    protected static _getStorage () : StorageObject | undefined {
+        return this._getWindow()?.sessionStorage;
     }
 
     public static on (name : StorageServiceEvent.PROPERTY_DELETED , callback : StorageServiceDeletedEventCallback)  : ObserverDestructor;

@@ -66,7 +66,7 @@ export abstract class AbstractStorageService {
         throw new Error('Must be implemented: _getObserver');
     }
 
-    protected static _getStorage () : StorageObject {
+    protected static _getStorage () : StorageObject | undefined {
         throw new Error('Must be implemented: _getStorage');
     }
 
@@ -138,26 +138,43 @@ export abstract class AbstractStorageService {
     }
 
     public static hasItem (key : string) : boolean {
-        return this._getStorage().getItem(key) !== null;
+        const storage = this._getStorage();
+        if (storage) {
+            return storage.getItem(key) !== null;
+        } else {
+            return false;
+        }
     }
 
     public static getItem (key : string) : string | null {
-        return this._getStorage().getItem(key);
+        const storage = this._getStorage();
+        if (storage) {
+            return storage.getItem(key);
+        } else {
+            return null;
+        }
     }
 
     public static removeItem (key : string) : typeof AbstractStorageService {
-        this._getStorage().removeItem(key);
+        const storage = this._getStorage();
+        if (storage) storage.removeItem(key);
         return this;
     }
 
     public static setItem (key : string, value: string) : typeof AbstractStorageService {
-        this._getStorage().setItem(key, value);
+        const storage = this._getStorage();
+        if (storage) storage.setItem(key, value);
         return this;
     }
 
     public static removeAllItems () : typeof AbstractStorageService {
-        this._getStorage().clear();
+        const storage = this._getStorage();
+        if (storage) storage.clear();
         return this;
+    }
+
+    protected static _getWindow () : any | undefined {
+        return typeof window !== 'undefined' ? window : undefined;
     }
 
 }
