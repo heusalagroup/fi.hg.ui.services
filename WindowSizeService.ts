@@ -77,7 +77,7 @@ export class WindowSizeService {
     }
 
     private static _startListeningResize () {
-        if (this._handleResize === undefined) {
+        if ( this._handleResize === undefined && typeof window !== 'undefined' ) {
             this._handleResize = WindowSizeService._onResize.bind(this);
             window.addEventListener("resize", this._handleResize);
         }
@@ -90,7 +90,7 @@ export class WindowSizeService {
             this._resizeTimeout = undefined;
         }
 
-        if (this._handleResize !== undefined) {
+        if (this._handleResize !== undefined && typeof window !== 'undefined' ) {
             window.removeEventListener("resize", this._handleResize);
             this._handleResize = undefined;
         }
