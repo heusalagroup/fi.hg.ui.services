@@ -18,6 +18,8 @@ export type WindowSizeServiceDestructor = ObserverDestructor;
 
 export class WindowSizeService {
 
+    private static readonly _hasWindow : boolean = typeof window !== 'undefined';
+
     private static _resizeTimeout : any | undefined = undefined;
     private static _handleResize  : VoidCallback | undefined = undefined;
 
@@ -27,11 +29,11 @@ export class WindowSizeService {
     public static Event = WindowSizeServiceEvent;
 
     public static getWidth () : number | undefined {
-        return window?.innerWidth;
+        return this._hasWindow ? window?.innerWidth : undefined;
     }
 
     public static getHeight () : number | undefined {
-        return window?.innerHeight;
+        return this._hasWindow ? window?.innerHeight : undefined;
     }
 
     public static on (
@@ -77,7 +79,7 @@ export class WindowSizeService {
     }
 
     private static _startListeningResize () {
-        if ( this._handleResize === undefined && typeof window !== 'undefined' ) {
+        if ( this._handleResize === undefined && this._hasWindow ) {
             this._handleResize = WindowSizeService._onResize.bind(this);
             window.addEventListener("resize", this._handleResize);
         }
@@ -90,7 +92,7 @@ export class WindowSizeService {
             this._resizeTimeout = undefined;
         }
 
-        if (this._handleResize !== undefined && typeof window !== 'undefined' ) {
+        if (this._handleResize !== undefined && this._hasWindow ) {
             window.removeEventListener("resize", this._handleResize);
             this._handleResize = undefined;
         }
