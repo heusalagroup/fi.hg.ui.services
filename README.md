@@ -1,10 +1,10 @@
-# @sendanor/ui-services
+# @heusalagroup/fi.hg.ui.services
 
 Our enterprise library for web based frontend apps.
 
 We will release our UI related services here as compile style library.
 
-*Note!* This library does not require ReactJS and can be used independently in any browser environment. See also our [ReactJS components](https://github.com/sendanor/ui-components).
+*Note!* This library does not require ReactJS and can be used independently in any browser environment. See also our [ReactJS components](https://github.com/heusalagroup/fi.hg.ui.components).
 
 ### It's MIT licenced
 
@@ -12,13 +12,13 @@ We will release our UI related services here as compile style library.
 
 This library expects some of our libraries to exist in relative paths:
 
- * [@sendanor/typescript](https://github.com/sendanor/typescript) to be located in the relative path `../../ts`
+ * [@heusalagroup/fi.hg.core](https://github.com/heusalagroup/fi.hg.core) to be located in the relative path `../../ts`
 
 The only 3rd party dependency we have is for [Lodash library](https://lodash.com/).
 
 ### It's well tested
 
-Our unit tests exists beside the code. To run tests, check out our test repository [@sendanor/test](https://github.com/sendanor/test).
+Our unit tests exists beside the code. To run tests, check out our test repository [@heusalagroup/fi.hg.test](https://github.com/heusalagroup/fi.hg.test).
 
 ### We don't have traditional releases
 
@@ -30,13 +30,13 @@ in a NodeJS or webpack project.
 Recommended way to initialize your project is like this:
 
 ```
-mkdir -p src/nor/ui
+mkdir -p src/hg/ui
 
-git submodule add git@github.com:sendanor/typescript.git src/nor/ts
-git config -f .gitmodules submodule.src/nor/ts.branch main
+git submodule add git@github.com:heusalagroup/fi.hg.core.git src/hg/ts
+git config -f .gitmodules submodule.src/hg/ts.branch main
 
-git submodule add git@github.com:sendanor/ui-services.git src/nor/ui/services
-git config -f .gitmodules submodule.src/nor/ui-services.branch main
+git submodule add git@github.com:heusalagroup/fi.hg.ui.services.git src/hg/ui/services
+git config -f .gitmodules submodule.src/hg/ui-services.branch main
 ```
 
 Only required dependency is to [the Lodash library](https://lodash.com/):
