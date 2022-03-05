@@ -1,8 +1,9 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import Observer, {ObserverCallback, ObserverDestructor} from "../../ts/Observer";
+import Observer, { ObserverCallback, ObserverDestructor } from "../../ts/Observer";
 import LogService from "../../ts/LogService";
-import {stringifyColorScheme, ColorScheme} from "./types/ColorScheme";
+import { ColorScheme, stringifyColorScheme } from "./types/ColorScheme";
+import { stringifyStyleScheme, StyleScheme } from "./types/StyleScheme";
 
 const LOG = LogService.createLogger('WindowService');
 
@@ -36,10 +37,11 @@ export interface StorageEventCallback {
 
 export class WindowService {
 
-    private static _observer : Observer<WindowServiceEvent> = new Observer<WindowServiceEvent>("WindowService");
-    private static _watchMediaDarkScheme  : MediaQueryList | undefined;
-    private static _watchMediaLightScheme : MediaQueryList | undefined;
-    private static _colorScheme           : ColorScheme | undefined;
+    private static _observer                       : Observer<WindowServiceEvent> = new Observer<WindowServiceEvent>("WindowService");
+    private static _watchMediaDarkScheme           : MediaQueryList | undefined;
+    private static _watchMediaLightScheme          : MediaQueryList | undefined;
+    private static _colorScheme                    : ColorScheme | undefined;
+    private static _styleScheme                    : StyleScheme | undefined;
     private static _darkColorSchemeChangeCallback  : MediaQueryListChangeCallback | undefined;
     private static _storageCallback                : StorageEventCallback | undefined;
 
@@ -80,6 +82,27 @@ export class WindowService {
         }
 
         return colorScheme;
+
+    }
+
+    /**
+     * This method returns the current style scheme in the browser.
+     *
+     * Check related ThemeService for app-level style scheme, which can also be changed in-app, and
+     * includes a LocalStorage state.
+     */
+    public static getStyleScheme () : StyleScheme {
+
+        let styleScheme = this._styleScheme;
+
+        if (styleScheme === undefined) {
+            styleScheme = this._getStyleScheme();
+            this._styleScheme = styleScheme;
+            LOG.info(`Style scheme initialized as ${stringifyStyleScheme(styleScheme)}`);
+            return styleScheme;
+        }
+
+        return styleScheme;
 
     }
 
@@ -189,6 +212,10 @@ export class WindowService {
 
     private static _getColorScheme () : ColorScheme {
         return this._isDarkModeEnabled() ? ColorScheme.DARK : ColorScheme.LIGHT;
+    }
+
+    private static _getStyleScheme () : StyleScheme {
+        return StyleScheme.NEUMORPHISM;
     }
 
     private static _isWatchingMediaScheme () : boolean {

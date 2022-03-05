@@ -22,8 +22,8 @@ export class LocalStorageService extends AbstractStorageService {
         return this._observer;
     }
 
-    protected static _getStorage () : StorageObject {
-        return window.localStorage;
+    protected static _getStorage () : StorageObject | undefined {
+        return this._getWindow()?.localStorage;
     }
 
     public static on (name : StorageServiceEvent.PROPERTY_DELETED , callback : StorageServiceDeletedEventCallback)  : ObserverDestructor;

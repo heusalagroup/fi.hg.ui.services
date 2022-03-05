@@ -5,6 +5,7 @@ import LocalStorageService from "./LocalStorageService";
 import Observer, {ObserverDestructor} from "../../ts/Observer";
 import {WindowServiceDestructor} from "./WindowService";
 import LogService from "../../ts/LogService";
+import { parseStyleScheme, stringifyStyleScheme, StyleScheme } from "./types/StyleScheme";
 
 const LOG = LogService.createLogger('ThemeLocalStorageService');
 
@@ -15,6 +16,7 @@ export enum ThemeLocalStorageServiceEvent {
 export type ThemeLocalStorageServiceColorSchemeChangedEventCallback = (name: ThemeLocalStorageServiceEvent.COLOR_SCHEME_CHANGED) => void;
 
 export const COLOR_SCHEME_LOCAL_STORAGE_KEY = 'fi.nor.colorScheme';
+export const STYLE_SCHEME_LOCAL_STORAGE_KEY = 'fi.nor.ui.style';
 
 export type ThemeLocalStorageServiceDestructor = ObserverDestructor;
 
@@ -44,6 +46,25 @@ export class ThemeLocalStorageService {
             }
         } else {
             LocalStorageService.setItem(COLOR_SCHEME_LOCAL_STORAGE_KEY, stringifyColorScheme(value));
+        }
+
+        return this;
+    }
+
+    public static getStyleScheme () : StyleScheme | undefined {
+        const value : string | null = LocalStorageService.getItem(STYLE_SCHEME_LOCAL_STORAGE_KEY);
+        if (!value) return undefined;
+        return parseStyleScheme(value);
+    }
+
+    public static setStyleScheme (value : StyleScheme | undefined) : ThemeLocalStorageService {
+
+        if (value === undefined) {
+            if (LocalStorageService.hasItem(STYLE_SCHEME_LOCAL_STORAGE_KEY)) {
+                LocalStorageService.removeItem(STYLE_SCHEME_LOCAL_STORAGE_KEY);
+            }
+        } else {
+            LocalStorageService.setItem(STYLE_SCHEME_LOCAL_STORAGE_KEY, stringifyStyleScheme(value));
         }
 
         return this;

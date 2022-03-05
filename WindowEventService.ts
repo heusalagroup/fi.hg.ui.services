@@ -14,7 +14,7 @@ export interface WindowServiceEventTargetInterface {
     postMessage(
         message       : any,
         targetOrigin  : string,
-        transfer     ?: ArrayBuffer | MessagePort | ImageBitmap | OffscreenCanvas
+        transfer     ?: ArrayBuffer | MessagePort | ImageBitmap
     ) : void;
 }
 
