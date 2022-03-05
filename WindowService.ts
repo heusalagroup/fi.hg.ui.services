@@ -1,7 +1,7 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import Observer, { ObserverCallback, ObserverDestructor } from "../../core/Observer";
-import LogService from "../../core/LogService";
+import { Observer,  ObserverCallback, ObserverDestructor } from "../../core/Observer";
+import { LogService } from "../../core/LogService";
 import { ColorScheme, stringifyColorScheme } from "./types/ColorScheme";
 import { stringifyStyleScheme, StyleScheme } from "./types/StyleScheme";
 
@@ -266,4 +266,4 @@ export class WindowService {
 
 }
 
-export default WindowService;
+

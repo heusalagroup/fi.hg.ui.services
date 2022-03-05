@@ -1,7 +1,7 @@
 // Copyright (c) 2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import ModalType from "./ModalType";
-import Json from "../../../core/Json";
+import { ModalType } from "./ModalType";
+import { JsonAny } from "../../../core/Json";
 
 export type ModalComponentType = any;
 
@@ -54,7 +54,7 @@ export class Modal {
         return this._id;
     }
 
-    public toJSON (): Json {
+    public toJSON (): JsonAny {
         return {
             type           : 'Modal',
             id             : this._id,
@@ -69,4 +69,4 @@ export function isModal (value: any): value is Modal {
     return value instanceof Modal;
 }
 
-export default Modal;
+

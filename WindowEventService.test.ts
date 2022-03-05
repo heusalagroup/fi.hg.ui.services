@@ -1,16 +1,16 @@
 // Copyright (c) 2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
 import SpyInstance = jest.SpyInstance;
-import WindowEventService, {
+import { WindowEventService, 
     WindowEventServiceDestructor,
     WindowEventServiceEvent,
     WindowEventServiceJsonMessageEventCallback,
     WindowEventServiceMessageEventCallback,
     WindowEventServiceStringMessageEventCallback
 } from "./WindowEventService";
-import LogService from "../../core/LogService";
+import { LogService } from "../../core/LogService";
 import {find, isFunction} from "../../core/modules/lodash";
-import LogLevel from "../../core/types/LogLevel";
+import { LogLevel } from "../../core/types/LogLevel";
 
 describe('WindowEventService', () => {
 

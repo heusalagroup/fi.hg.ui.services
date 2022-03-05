@@ -1,10 +1,10 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
 import {ColorScheme, parseColorScheme, stringifyColorScheme} from "./types/ColorScheme";
-import LocalStorageService from "./LocalStorageService";
-import Observer, {ObserverDestructor} from "../../core/Observer";
+import { LocalStorageService } from "./LocalStorageService";
+import { Observer, ObserverDestructor} from "../../core/Observer";
 import {WindowServiceDestructor} from "./WindowService";
-import LogService from "../../core/LogService";
+import { LogService } from "../../core/LogService";
 import { parseStyleScheme, stringifyStyleScheme, StyleScheme } from "./types/StyleScheme";
 
 const LOG = LogService.createLogger('ThemeLocalStorageService');
@@ -144,4 +144,4 @@ export class ThemeLocalStorageService {
 
 }
 
-export default ThemeLocalStorageService;
+

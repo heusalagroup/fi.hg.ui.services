@@ -1,9 +1,9 @@
 // Copyright (c) 2020-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-//import LogService from "../../core/LogService";
-import JsonAny from "../../core/Json";
+//import { LogService } from "../../core/LogService";
+import { JsonAny } from "../../core/Json";
 
-import SessionStorageService, {SessionStorageServiceDestructor} from "./SessionStorageService";
+import { SessionStorageService, SessionStorageServiceDestructor} from "./SessionStorageService";
 import {
     StorageServiceChangedEventCallback, StorageServiceClearEventCallback,
     StorageServiceCreatedEventCallback,
@@ -72,4 +72,4 @@ export class JsonSessionStorageService {
 
 }
 
-export default JsonSessionStorageService;
+

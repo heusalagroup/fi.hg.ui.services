@@ -1,9 +1,9 @@
 // Copyright (c) 2020-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import SessionStorageService, {SessionStorageServiceDestructor} from "./SessionStorageService";
+import { SessionStorageService, SessionStorageServiceDestructor} from "./SessionStorageService";
 import {isFunction} from "../../core/modules/lodash";
-import WindowService, {WindowServiceEvent} from "./WindowService";
-import JsonSessionStorageService from "./JsonSessionStorageService";
+import { WindowService, WindowServiceEvent} from "./WindowService";
+import { JsonSessionStorageService } from "./JsonSessionStorageService";
 import {StorageServiceEvent} from "./private/AbtractStorageService";
 
 describe('SessionStorageService', () => {

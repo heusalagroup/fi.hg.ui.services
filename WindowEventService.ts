@@ -1,7 +1,7 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import LogService from "../../core/LogService";
-import Observer, {ObserverCallback, ObserverDestructor} from "../../core/Observer";
+import { LogService } from "../../core/LogService";
+import { Observer, ObserverCallback, ObserverDestructor} from "../../core/Observer";
 import {JsonObject} from "../../core/Json";
 import {isString} from "../../core/modules/lodash";
 
@@ -200,4 +200,4 @@ export class WindowEventService {
 
 }
 
-export default WindowEventService;
+

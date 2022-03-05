@@ -1,7 +1,7 @@
 // Copyright (c) 2020-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import LocalStorageService, {LocalStorageServiceDestructor} from "./LocalStorageService";
-import WindowService, {WindowServiceEvent} from "./WindowService";
+import { LocalStorageService, LocalStorageServiceDestructor} from "./LocalStorageService";
+import { WindowService, WindowServiceEvent} from "./WindowService";
 import {isFunction} from "../../core/modules/lodash";
 import {StorageServiceEvent} from "./private/AbtractStorageService";
 

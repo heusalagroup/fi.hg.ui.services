@@ -1,9 +1,9 @@
 // Copyright (c) 2020-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-//import LogService from "../../core/LogService";
-import JsonAny from "../../core/Json";
+//import { LogService } from "../../core/LogService";
+import { JsonAny } from "../../core/Json";
 
-import LocalStorageService from "./LocalStorageService";
+import { LocalStorageService } from "./LocalStorageService";
 import {
     StorageServiceChangedEventCallback, StorageServiceClearEventCallback,
     StorageServiceCreatedEventCallback,
@@ -76,4 +76,4 @@ export class JsonLocalStorageService {
 
 }
 
-export default JsonLocalStorageService;
+

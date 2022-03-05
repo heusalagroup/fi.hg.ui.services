@@ -1,14 +1,14 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import WindowService, {WindowServiceDestructor, WindowServiceEvent} from "./WindowService";
-import Observer, {ObserverDestructor} from "../../core/Observer";
+import { WindowService, WindowServiceDestructor, WindowServiceEvent} from "./WindowService";
+import { Observer, ObserverDestructor} from "../../core/Observer";
 import {ColorScheme, isColorScheme, stringifyColorScheme} from "./types/ColorScheme";
-import LogService from "../../core/LogService";
-import ThemeLocalStorageService, {
+import { LogService } from "../../core/LogService";
+import { ThemeLocalStorageService, 
     ThemeLocalStorageServiceDestructor,
     ThemeLocalStorageServiceEvent
 } from "./ThemeLocalStorageService";
-import WindowEventService, {
+import { WindowEventService, 
     WindowEventServiceDestructor,
     WindowEventServiceEvent,
     WindowServiceEventTargetObject
@@ -329,4 +329,4 @@ export class ThemeService {
 
 }
 
-export default ThemeService;
+

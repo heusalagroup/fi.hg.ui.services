@@ -1,24 +1,24 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import ThemeService, {
+import { ThemeService, 
     ThemeServiceColorSchemeChangedEventCallback,
     ThemeServiceDestructor,
     ThemeServiceEvent,
     ThemeServiceMessageType
 } from "./ThemeService";
 import {ColorScheme} from "./types/ColorScheme";
-import WindowService, {
+import { WindowService, 
     WindowServiceColorSchemeChangedEventCallback,
     WindowServiceDestructor,
     WindowServiceEvent
 } from "./WindowService";
-import LogService, {LogLevel} from "../../core/LogService";
+import { LogService, LogLevel} from "../../core/LogService";
 import {isFunction} from "../../core/modules/lodash";
-import ThemeLocalStorageService, {
+import { ThemeLocalStorageService, 
     ThemeLocalStorageServiceColorSchemeChangedEventCallback,
     ThemeLocalStorageServiceEvent
 } from "./ThemeLocalStorageService";
-import WindowEventService, {
+import { WindowEventService, 
     WindowEventServiceEvent,
     WindowEventServiceJsonMessageEventCallback
 } from "./WindowEventService";

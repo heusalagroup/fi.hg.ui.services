@@ -1,7 +1,7 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import JsonLocalStorageService from "./JsonLocalStorageService";
-import LocalStorageService from "./LocalStorageService";
+import { JsonLocalStorageService } from "./JsonLocalStorageService";
+import { LocalStorageService } from "./LocalStorageService";
 import SpyInstance = jest.SpyInstance;
 import {StorageServiceEvent} from "./private/AbtractStorageService";
 

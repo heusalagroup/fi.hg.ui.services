@@ -1,12 +1,12 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
 import {isFunction} from "../../core/modules/lodash";
-import WindowService, {
+import { WindowService, 
     DARK_COLOR_SCHEME_QUERY,
     WindowServiceDestructor,
     WindowServiceEvent
 } from "./WindowService";
-import LogService, {LogLevel} from "../../core/LogService";
+import { LogService, LogLevel} from "../../core/LogService";
 import SpyInstance = jest.SpyInstance;
 import {ColorScheme} from "./types/ColorScheme";
 

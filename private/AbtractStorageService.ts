@@ -1,6 +1,6 @@
 // Copyright (c) 2020-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import Observer, {ObserverDestructor} from "../../../core/Observer";
+import { Observer, ObserverDestructor} from "../../../core/Observer";
 
 export enum StorageServiceEvent {
 
@@ -179,4 +179,4 @@ export abstract class AbstractStorageService {
 
 }
 
-export default AbstractStorageService;
+

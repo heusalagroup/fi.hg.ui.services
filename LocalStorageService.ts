@@ -1,6 +1,6 @@
 // Copyright (c) 2020-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import AbstractStorageService, {
+import { AbstractStorageService, 
     isStorageServiceEvent,
     StorageObject,
     StorageServiceChangedEventCallback, StorageServiceClearEventCallback,
@@ -8,8 +8,8 @@ import AbstractStorageService, {
     StorageServiceDeletedEventCallback,
     StorageServiceEvent, StorageServiceModifiedEventCallback
 } from "./private/AbtractStorageService";
-import Observer, {ObserverCallback, ObserverDestructor} from "../../core/Observer";
-import WindowService, {WindowServiceDestructor, WindowServiceEvent} from "./WindowService";
+import { Observer, ObserverCallback, ObserverDestructor} from "../../core/Observer";
+import { WindowService, WindowServiceDestructor, WindowServiceEvent} from "./WindowService";
 
 export type LocalStorageServiceDestructor = ObserverDestructor;
 
@@ -125,4 +125,4 @@ export class LocalStorageService extends AbstractStorageService {
 
 }
 
-export default LocalStorageService;
+

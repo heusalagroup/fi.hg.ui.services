@@ -1,6 +1,6 @@
 import { isString } from "../../core/modules/lodash";
 
-export default class EmailUtils {
+export class EmailUtils {
 
     public static isEmailValid (value: string) : boolean {
         if (!isString(value)) {

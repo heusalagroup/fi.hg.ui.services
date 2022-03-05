@@ -1,14 +1,14 @@
 // Copyright (c) 2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import ModalType from "./types/ModalType";
-import Modal, { ModalComponentType } from "./types/Modal";
+import { ModalType } from "./types/ModalType";
+import { Modal,  ModalComponentType } from "./types/Modal";
 import {
     concat,
     forEach,
     remove
 } from "../../core/modules/lodash";
-import Observer, { ObserverCallback, ObserverDestructor } from "../../core/Observer";
-import LogService from "../../core/LogService";
+import { Observer,  ObserverCallback, ObserverDestructor } from "../../core/Observer";
+import { LogService } from "../../core/LogService";
 
 const LOG = LogService.createLogger('ModalService');
 
@@ -131,4 +131,4 @@ export class ModalService {
 
 }
 
-export default ModalService;
+

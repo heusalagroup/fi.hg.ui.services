@@ -48,4 +48,4 @@ export function parseModalType (value: any): ModalType | undefined {
 
 }
 
-export default ModalType;
+
