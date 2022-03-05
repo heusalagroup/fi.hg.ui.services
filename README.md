@@ -30,13 +30,13 @@ in a NodeJS or webpack project.
 Recommended way to initialize your project is like this:
 
 ```
-mkdir -p src/fi/nor/ui
+mkdir -p src/fi/hg/ui
 
-git submodule add git@github.com:sendanor/typescript.git src/fi/nor/ts
-git config -f .gitmodules submodule.src/fi/nor/ts.branch main
+git submodule add git@github.com:heusalagroup/fi.hg.core.git src/fi/hg/ts
+git config -f .gitmodules submodule.src/fi/hg/ts.branch main
 
-git submodule add git@github.com:sendanor/ui-services.git src/fi/nor/ui/services
-git config -f .gitmodules submodule.src/fi/nor/ui-services.branch main
+git submodule add git@github.com:heusalagroup/fi.hg.ui.services.git src/fi/hg/ui/services
+git config -f .gitmodules submodule.src/fi/hg/ui-services.branch main
 ```
 
 Only required dependency is to [the Lodash library](https://lodash.com/):
