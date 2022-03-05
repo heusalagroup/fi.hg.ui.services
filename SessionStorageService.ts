@@ -9,7 +9,7 @@ import AbstractStorageService, {
     StorageServiceEvent,
     StorageServiceModifiedEventCallback
 } from "./private/AbtractStorageService";
-import Observer, {ObserverCallback, ObserverDestructor} from "../../ts/Observer";
+import Observer, {ObserverCallback, ObserverDestructor} from "../../core/Observer";
 import WindowService, {WindowServiceDestructor, WindowServiceEvent} from "./WindowService";
 
 export type SessionStorageServiceDestructor = ObserverDestructor;

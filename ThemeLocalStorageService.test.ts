@@ -6,8 +6,8 @@ import ThemeLocalStorageService, {
 } from "./ThemeLocalStorageService";
 import {ColorScheme} from "./types/ColorScheme";
 import LocalStorageService from "./LocalStorageService";
-import {find, isFunction} from "../../ts/modules/lodash";
-import LogService, {LogLevel} from "../../ts/LogService";
+import {find, isFunction} from "../../core/modules/lodash";
+import LogService, {LogLevel} from "../../core/LogService";
 
 describe('ThemeLocalStorageService', () => {
 

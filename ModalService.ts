@@ -6,9 +6,9 @@ import {
     concat,
     forEach,
     remove
-} from "../../ts/modules/lodash";
-import Observer, { ObserverCallback, ObserverDestructor } from "../../ts/Observer";
-import LogService from "../../ts/LogService";
+} from "../../core/modules/lodash";
+import Observer, { ObserverCallback, ObserverDestructor } from "../../core/Observer";
+import LogService from "../../core/LogService";
 
 const LOG = LogService.createLogger('ModalService');
 

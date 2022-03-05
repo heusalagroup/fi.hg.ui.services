@@ -8,9 +8,9 @@ import WindowEventService, {
     WindowEventServiceMessageEventCallback,
     WindowEventServiceStringMessageEventCallback
 } from "./WindowEventService";
-import LogService from "../../ts/LogService";
-import {find, isFunction} from "../../ts/modules/lodash";
-import LogLevel from "../../ts/types/LogLevel";
+import LogService from "../../core/LogService";
+import {find, isFunction} from "../../core/modules/lodash";
+import LogLevel from "../../core/types/LogLevel";
 
 describe('WindowEventService', () => {
 

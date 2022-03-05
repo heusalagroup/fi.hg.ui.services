@@ -1,4 +1,4 @@
-import { isString } from "../../ts/modules/lodash";
+import { isString } from "../../core/modules/lodash";
 
 export default class EmailUtils {
 

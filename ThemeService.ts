@@ -1,9 +1,9 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
 import WindowService, {WindowServiceDestructor, WindowServiceEvent} from "./WindowService";
-import Observer, {ObserverDestructor} from "../../ts/Observer";
+import Observer, {ObserverDestructor} from "../../core/Observer";
 import {ColorScheme, isColorScheme, stringifyColorScheme} from "./types/ColorScheme";
-import LogService from "../../ts/LogService";
+import LogService from "../../core/LogService";
 import ThemeLocalStorageService, {
     ThemeLocalStorageServiceDestructor,
     ThemeLocalStorageServiceEvent
@@ -13,7 +13,7 @@ import WindowEventService, {
     WindowEventServiceEvent,
     WindowServiceEventTargetObject
 } from "./WindowEventService";
-import {JsonObject} from "../../ts/Json";
+import {JsonObject} from "../../core/Json";
 import { isStyleScheme, stringifyStyleScheme, StyleScheme } from "./types/StyleScheme";
 
 const LOG = LogService.createLogger('ThemeService');

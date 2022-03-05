@@ -1,8 +1,8 @@
 // Copyright (c) 2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import Observer, { ObserverCallback, ObserverDestructor } from "../../ts/Observer";
-import { VoidCallback } from "../../ts/interfaces/callbacks";
-import LogService from "../../ts/LogService";
+import Observer, { ObserverCallback, ObserverDestructor } from "../../core/Observer";
+import { VoidCallback } from "../../core/interfaces/callbacks";
+import LogService from "../../core/LogService";
 
 const LOG = LogService.createLogger('WindowSizeService');
 

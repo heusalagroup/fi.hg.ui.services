@@ -1,9 +1,9 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import LogService from "../../ts/LogService";
-import Observer, {ObserverCallback, ObserverDestructor} from "../../ts/Observer";
-import {JsonObject} from "../../ts/Json";
-import {isString} from "../../ts/modules/lodash";
+import LogService from "../../core/LogService";
+import Observer, {ObserverCallback, ObserverDestructor} from "../../core/Observer";
+import {JsonObject} from "../../core/Json";
+import {isString} from "../../core/modules/lodash";
 
 const LOG = LogService.createLogger('WindowEventService');
 

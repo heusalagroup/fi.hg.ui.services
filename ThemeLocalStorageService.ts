@@ -2,9 +2,9 @@
 
 import {ColorScheme, parseColorScheme, stringifyColorScheme} from "./types/ColorScheme";
 import LocalStorageService from "./LocalStorageService";
-import Observer, {ObserverDestructor} from "../../ts/Observer";
+import Observer, {ObserverDestructor} from "../../core/Observer";
 import {WindowServiceDestructor} from "./WindowService";
-import LogService from "../../ts/LogService";
+import LogService from "../../core/LogService";
 import { parseStyleScheme, stringifyStyleScheme, StyleScheme } from "./types/StyleScheme";
 
 const LOG = LogService.createLogger('ThemeLocalStorageService');

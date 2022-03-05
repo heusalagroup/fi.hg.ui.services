@@ -1,7 +1,7 @@
 // Copyright (c) 2020-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-//import LogService from "../../ts/LogService";
-import JsonAny from "../../ts/Json";
+//import LogService from "../../core/LogService";
+import JsonAny from "../../core/Json";
 
 import LocalStorageService from "./LocalStorageService";
 import {
@@ -10,7 +10,7 @@ import {
     StorageServiceDeletedEventCallback,
     StorageServiceEvent, StorageServiceModifiedEventCallback
 } from "./private/AbtractStorageService";
-import {ObserverDestructor} from "../../ts/Observer";
+import {ObserverDestructor} from "../../core/Observer";
 
 //const LOG = LogService.createLogger('JsonLocalStorageService');
 

@@ -12,8 +12,8 @@ import WindowService, {
     WindowServiceDestructor,
     WindowServiceEvent
 } from "./WindowService";
-import LogService, {LogLevel} from "../../ts/LogService";
-import {isFunction} from "../../ts/modules/lodash";
+import LogService, {LogLevel} from "../../core/LogService";
+import {isFunction} from "../../core/modules/lodash";
 import ThemeLocalStorageService, {
     ThemeLocalStorageServiceColorSchemeChangedEventCallback,
     ThemeLocalStorageServiceEvent

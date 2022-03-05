@@ -1,7 +1,7 @@
 // Copyright (c) 2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import LogService from "../../ts/LogService";
-import Observer, { ObserverCallback, ObserverDestructor } from "../../ts/Observer";
+import LogService from "../../core/LogService";
+import Observer, { ObserverCallback, ObserverDestructor } from "../../core/Observer";
 
 const LOG = LogService.createLogger('RouteService');
 

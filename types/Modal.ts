@@ -1,7 +1,7 @@
 // Copyright (c) 2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
 import ModalType from "./ModalType";
-import Json from "../../../ts/Json";
+import Json from "../../../core/Json";
 
 export type ModalComponentType = any;
 
