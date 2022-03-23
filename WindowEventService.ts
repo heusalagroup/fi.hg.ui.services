@@ -125,7 +125,11 @@ export class WindowEventService {
 
         this._messageCallback = this._processMessageEventObject.bind(this);
 
-        window.addEventListener('message', this._messageCallback);
+        if (typeof window !== 'undefined') {
+            window.addEventListener('message', this._messageCallback);
+        } else {
+            LOG.warn(`Cannot listen message events. No window object detected.`);
+        }
 
     }
 

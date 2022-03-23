@@ -178,16 +178,23 @@ export class WindowService {
             this._unInitializeStorageListener();
         }
 
-        this._storageCallback = this._onStorageEvent.bind(this);
-
-        window.addEventListener('storage', this._storageCallback);
+        if (typeof window !== "undefined") {
+            this._storageCallback = this._onStorageEvent.bind(this);
+            window.addEventListener('storage', this._storageCallback);
+        } else {
+            LOG.warn(`Cannot listen storage events. No window object detected.`);
+        }
 
     }
 
     private static _unInitializeStorageListener () {
 
         if (this._storageCallback) {
-            window.removeEventListener('storage', this._storageCallback);
+            if (typeof window !== "undefined") {
+                window.removeEventListener('storage', this._storageCallback);
+            } else {
+                LOG.warn(`Cannot remove storage event listener. No window object detected.`);
+            }
             this._storageCallback = undefined;
         }
 
@@ -207,7 +214,7 @@ export class WindowService {
 
 
     private static _isDarkModeEnabled () : boolean {
-        return !!window.matchMedia && !!window.matchMedia(DARK_COLOR_SCHEME_QUERY)?.matches;
+        return typeof window !== "undefined" && !!window.matchMedia && !!window.matchMedia(DARK_COLOR_SCHEME_QUERY)?.matches;
     }
 
     private static _getColorScheme () : ColorScheme {
@@ -226,6 +233,11 @@ export class WindowService {
 
         if ( this._watchMediaDarkScheme || this._watchMediaLightScheme ) {
             this._unInitializeMediaSchemeListeners();
+        }
+
+        if (typeof window === "undefined") {
+            LOG.warn(`No window object detected. Cannot setup media scheme listeners.`);
+            return;
         }
 
         const darkCallback = this._darkColorSchemeChangeCallback = this._onDarkColorSchemeChange.bind(this);

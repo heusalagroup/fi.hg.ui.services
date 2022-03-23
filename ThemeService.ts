@@ -4,11 +4,11 @@ import { WindowService, WindowServiceDestructor, WindowServiceEvent} from "./Win
 import { Observer, ObserverDestructor} from "../../core/Observer";
 import {ColorScheme, isColorScheme, stringifyColorScheme} from "./types/ColorScheme";
 import { LogService } from "../../core/LogService";
-import { ThemeLocalStorageService, 
+import { ThemeLocalStorageService,
     ThemeLocalStorageServiceDestructor,
     ThemeLocalStorageServiceEvent
 } from "./ThemeLocalStorageService";
-import { WindowEventService, 
+import { WindowEventService,
     WindowEventServiceDestructor,
     WindowEventServiceEvent,
     WindowServiceEventTargetObject
@@ -73,9 +73,7 @@ export class ThemeService {
     private static _storageServiceListener     : ThemeLocalStorageServiceDestructor | undefined;
     private static _windowEventServiceListener : WindowEventServiceDestructor | undefined;
 
-
     public static Event = ThemeServiceEvent;
-
 
     public static hasDarkMode () : boolean {
         return this.getColorScheme() === ColorScheme.DARK;
