@@ -1,10 +1,10 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import { ThemeLocalStorageService, 
+import { ThemeLocalStorageService,
     COLOR_SCHEME_LOCAL_STORAGE_KEY,
     ThemeLocalStorageServiceEvent
 } from "./ThemeLocalStorageService";
-import {ColorScheme} from "./types/ColorScheme";
+import {ColorScheme} from "../../core/style/types/ColorScheme";
 import { LocalStorageService } from "./LocalStorageService";
 import {find, isFunction} from "../../core/modules/lodash";
 import { LogService, LogLevel} from "../../core/LogService";

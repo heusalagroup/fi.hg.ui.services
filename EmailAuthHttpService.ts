@@ -1,13 +1,13 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { EmailTokenDTO, isEmailTokenDTO } from "../../auth/email/types/EmailTokenDTO";
+import { EmailTokenDTO, isEmailTokenDTO } from "../../core/auth/email/types/EmailTokenDTO";
 import { Language } from "../../core/types/Language";
 import { LanguageService } from "../../core/LanguageService";
 import { HttpService } from "../../core/HttpService";
 import { LogService } from "../../core/LogService";
-import { VerifyEmailCodeDTO } from "../../auth/email/types/VerifyEmailCodeDTO";
+import { VerifyEmailCodeDTO } from "../../core/auth/email/types/VerifyEmailCodeDTO";
 import { ReadonlyJsonAny } from "../../core/Json";
-import { AUTHENTICATE_EMAIL_URL, VERIFY_EMAIL_CODE_URL, VERIFY_EMAIL_TOKEN_URL } from "../../auth/email/constants";
+import { AUTHENTICATE_EMAIL_URL, VERIFY_EMAIL_CODE_URL, VERIFY_EMAIL_TOKEN_URL } from "../../core/auth/email/constants";
 
 const LOG = LogService.createLogger('EmailAuthHttpService');
 

@@ -2,7 +2,7 @@
 
 import { WindowService, WindowServiceDestructor, WindowServiceEvent} from "./WindowService";
 import { Observer, ObserverDestructor} from "../../core/Observer";
-import {ColorScheme, isColorScheme, stringifyColorScheme} from "./types/ColorScheme";
+import {ColorScheme, isColorScheme, stringifyColorScheme} from "../../core/style/types/ColorScheme";
 import { LogService } from "../../core/LogService";
 import { ThemeLocalStorageService,
     ThemeLocalStorageServiceDestructor,

@@ -1,6 +1,6 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { EmailTokenDTO, isEmailTokenDTO } from "../../auth/email/types/EmailTokenDTO";
+import { EmailTokenDTO, isEmailTokenDTO } from "../../core/auth/email/types/EmailTokenDTO";
 import { Observer, ObserverCallback, ObserverDestructor } from "../../core/Observer";
 import { LogService } from "../../core/LogService";
 import { JsonLocalStorageService } from "./JsonLocalStorageService";

@@ -2,7 +2,7 @@
 
 import { Observer,  ObserverCallback, ObserverDestructor } from "../../core/Observer";
 import { LogService } from "../../core/LogService";
-import { ColorScheme, stringifyColorScheme } from "./types/ColorScheme";
+import { ColorScheme, stringifyColorScheme } from "../../core/style/types/ColorScheme";
 import { stringifyStyleScheme, StyleScheme } from "./types/StyleScheme";
 
 const LOG = LogService.createLogger('WindowService');

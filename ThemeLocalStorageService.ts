@@ -1,6 +1,6 @@
 // Copyright (c) 2021-2021. Sendanor <info@sendanor.fi>. All rights reserved.
 
-import {ColorScheme, parseColorScheme, stringifyColorScheme} from "./types/ColorScheme";
+import {ColorScheme, parseColorScheme, stringifyColorScheme} from "../../core/style/types/ColorScheme";
 import { LocalStorageService } from "./LocalStorageService";
 import { Observer, ObserverDestructor} from "../../core/Observer";
 import {WindowServiceDestructor} from "./WindowService";
