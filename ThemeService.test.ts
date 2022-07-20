@@ -12,7 +12,7 @@ import { WindowService,
     WindowServiceDestructor,
     WindowServiceEvent
 } from "./WindowService";
-import { LogService, LogLevel} from "../../core/LogService";
+import { LogService } from "../../core/LogService";
 import {isFunction} from "../../core/modules/lodash";
 import { ThemeLocalStorageService,
     ThemeLocalStorageServiceColorSchemeChangedEventCallback,
@@ -23,6 +23,7 @@ import { WindowEventService,
     WindowEventServiceJsonMessageEventCallback
 } from "./WindowEventService";
 import SpyInstance = jest.SpyInstance;
+import { LogLevel } from "../../core/types/LogLevel";
 
 describe('ThemeService', () => {
 

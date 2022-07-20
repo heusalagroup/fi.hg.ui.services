@@ -6,9 +6,10 @@ import { WindowService,
     WindowServiceDestructor,
     WindowServiceEvent
 } from "./WindowService";
-import { LogService, LogLevel} from "../../core/LogService";
+import { LogService } from "../../core/LogService";
 import SpyInstance = jest.SpyInstance;
 import {ColorScheme} from "../../core/style/types/ColorScheme";
+import { LogLevel } from "../../core/types/LogLevel";
 
 describe('WindowService', () => {
 
