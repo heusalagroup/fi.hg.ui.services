@@ -1,3 +1,9 @@
+# ***OBSOLETE! DEPRECATED!***
+
+See [fi.hg.frontend](https://github.com/heusalagroup/fi.hg.frontend)
+
+----------------
+
 # @heusalagroup/fi.hg.ui.services
 
 Our enterprise library for web based frontend apps.
